@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestore
 
 struct LoginView: View {
     @State var newUsername: String = ""
@@ -43,7 +45,7 @@ struct LoginView: View {
             }
             Button(action: {
                 if self.newPassword != "" {
-                    print(self.newPassword)
+                    registerNewUser()
                 }
                 else {
                     //let invalidInputAlert = UIAlertController(title: "Invalid Input", message: "Please enter valid information.", preferredStyle: .alert)
@@ -57,6 +59,23 @@ struct LoginView: View {
                 .padding(10)
                 .border(Color.purple, width: 5)
             }
+        }
+    }
+}
+
+private func registerNewUser() {
+    let db = Firestore.firestore()
+    var ref: DocumentReference? = nil
+    ref = db.collection("users").addDocument(data: [
+        "id": "sadf232",
+        "username": "AdaLovelace57",
+        "password": "password",
+        "faculty": "Math"
+    ]) { err in
+        if let err = err {
+            print("Error adding document: \(err)")
+        } else {
+            print("Document added with ID: \(ref!.documentID)")
         }
     }
 }
