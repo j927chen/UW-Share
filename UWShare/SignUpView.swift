@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SignUpView.swift
 //  UWShare
 //
 //  Created by Jason Chen on 2020-01-07.
@@ -15,8 +15,9 @@ struct SignUpView: View {
     let minPasswordLength = 8
     let nonMatchingPasswordErrorMessage = "✖ The passwords do not match"
     let invalidPasswordErrorMessage = "✖ Password must be at least 8 characters"
-    @State private var newUsername: String = ""
-    @State private var newPassword: String = ""
+    @State private var email: String = ""
+    @State private var username: String = ""
+    @State private var password: String = ""
     @State private var confirmedPassword: String = ""
     @State private var usernameErrorMessageOpacity: Double = 0
     @State private var passwordErrorMessage : String = ""
@@ -26,7 +27,7 @@ struct SignUpView: View {
             VStack {
                 HStack {
                     Button("<--"){
-                        // do something
+                        // go to login view
                     }
                     Spacer()
                 }
@@ -38,6 +39,15 @@ struct SignUpView: View {
             Image("University of Waterloo Logo")
             Spacer()
             VStack(alignment: .leading) {
+                Text("Enter your Email")
+                    .foregroundColor(.yellow)
+                    .bold()
+                HStack {
+                    TextField("Enter your Email", text: $email)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                }
+            }.padding()
+            VStack(alignment: .leading) {
                 Text("Create Your Username")
                     .foregroundColor(.yellow)
                     .bold()
@@ -45,7 +55,7 @@ struct SignUpView: View {
                     .opacity(usernameErrorMessageOpacity)
                     .foregroundColor(.red)
                 HStack {
-                    TextField("Make it funny and cheeky", text: $newUsername)
+                    TextField("Make it funny and cheeky", text: $username)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
             }.padding()
@@ -57,7 +67,7 @@ struct SignUpView: View {
                     .opacity(passwordErrorMessageOpacity)
                     .foregroundColor(.red)
                 HStack{
-                    SecureField("Make sure your password is strong", text: $newPassword)
+                    SecureField("Make sure your password is strong", text: $password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
             }.padding()
@@ -71,28 +81,38 @@ struct SignUpView: View {
                 }
             }.padding()
             Button(action: {
-                if self.checkNewUsernameValidity(username: self.newUsername) {
+                if self.checkNewUsernameValidity(username: self.username) {
                     self.usernameErrorMessageOpacity = 0
-                    if !self.usernameAlreadyRegistered(username: self.newUsername) {
-                    if self.checkPasswordMatch(password: self.newPassword, confirmedPassword: self.confirmedPassword) {
-                        self.passwordErrorMessageOpacity = 0
-                        if self.checkPasswordValidity(password: self.newPassword) {
-                            self.registerNewUser(username: self.newUsername, password: self.newPassword)
-                            // take user to dashboard view
+                    if true {//!self.usernameAlreadyRegistered(username: self.newUsername) {
+                        if self.checkPasswordMatch(password: self.password, confirmedPassword: self.confirmedPassword) {
+                            self.passwordErrorMessageOpacity = 0
+                            if self.checkPasswordValidity(password: self.password) {
+                                Auth.auth().createUser(withEmail: self.email, password: self.password) { (result, error) in
+                                        if error != nil {
+                                            print("Error creating user")
+                                        } else {
+                                            self.registerNewUser(username: self.username, password: self.password)
+                                        }
+                                    }
+                                Auth.auth().currentUser?.sendEmailVerification{ (error) in
+                                    if error != nil {
+                                        print("Huh?")
+                                    } else {
+                                        print("Sent email verification")
+                                    }
+                                }
+                            } else {
+                                self.passwordErrorMessage = self.invalidPasswordErrorMessage
+                                self.passwordErrorMessageOpacity = 1
+                            }
                         } else {
-                            self.passwordErrorMessage = self.invalidPasswordErrorMessage
+                            self.passwordErrorMessage = self.nonMatchingPasswordErrorMessage
                             self.passwordErrorMessageOpacity = 1
                         }
                     } else {
-                        self.passwordErrorMessage = self.nonMatchingPasswordErrorMessage
-                        self.passwordErrorMessageOpacity = 1
+                        print("Email already registered")
                     }
-                    }
-                    else {
-                        print("asddasd")
-                    }
-                }
-                else {
+                } else {
                     self.usernameErrorMessageOpacity = 1.0
                 }
             }) {Text("Sign Up!")
@@ -139,15 +159,8 @@ struct SignUpView: View {
         }
     }
     private func usernameAlreadyRegistered(username: String) -> Bool {
-        let db = Firestore.firestore()
-        var preexistingUser = false
-        db.collection("users").document(username).getDocument { (document, error) in
-            if let document = document, document.exists {
-                preexistingUser = true
-            } else {
-            }
-        }
-        return preexistingUser
+        // some code
+        return true
     }
 
     struct SignUpView_Previews: PreviewProvider {
