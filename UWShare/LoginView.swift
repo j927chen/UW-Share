@@ -8,46 +8,56 @@
 
 import SwiftUI
 import Firebase
+import AVKit
 
 struct LoginView: View {
-    @State private var email = ""
-    @State private var password = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var loginErrorMessage: String = ""
+    @State private var loginErrorMessageOpacity: Double = 0
     var body: some View {
         VStack {
-                   VStack {
-                       Text("UW Share")
-                           .bold()
-                           .font(.largeTitle)
-                   }.foregroundColor(.yellow)
-                   Image("University of Waterloo Logo")
-                   Spacer()
-                   VStack(alignment: .leading) {
-                       Text("Sign in with Email")
-                           .foregroundColor(.yellow)
-                           .bold()
-                       HStack {
-                           TextField("Enter your Email", text: $email)
-                               .textFieldStyle(RoundedBorderTextFieldStyle())
-                       }
-                   }.padding()
-                   VStack (alignment: .leading) {
-                       Text("Enter your password")
-                           .foregroundColor(.yellow)
-                           .bold()
-                       HStack{
-                           SecureField("Enter your password", text: $password)
-                               .textFieldStyle(RoundedBorderTextFieldStyle())
-                       }
-                   }.padding()
+            Text("UW Share")
+                .bold()
+                .font(.largeTitle)
+                .foregroundColor(.yellow)
+            Image("Login")
+                .clipShape(Circle())
+            Spacer()
+            Text("❌ " + self.loginErrorMessage)
+                .opacity(loginErrorMessageOpacity)
+                .foregroundColor(.red)
+            VStack(alignment: .leading) {
+            Text("Sign in with Email")
+                .foregroundColor(.yellow)
+                .bold()
+            TextField("Enter your Email", text: $email)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            }.padding()
+            VStack (alignment: .leading) {
+                Text("Enter your password")
+                    .foregroundColor(.yellow)
+                    .bold()
+                SecureField("Enter your password", text: $password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            }.padding()
             Button(action: {
+                self.loginErrorMessageOpacity = 0
                 Auth.auth().signIn(withEmail: self.email, password: self.password) { (result, error) in
                     if error != nil {
-                        print("Couldn't sign in")
+                        print(error?.localizedDescription)
+                        self.loginErrorMessage = error!.localizedDescription
+                        self.loginErrorMessageOpacity = 1
                     } else {
-                        print("Jason")
+                        print("User successfully logged in!")
                     }
                 }
             }) {Text("Login")}
+                .padding()
+                .background(Color.orange)
+                .foregroundColor(.white)
+                .padding(10)
+                .border(Color.orange, width: 5)
         }
     }
 }
