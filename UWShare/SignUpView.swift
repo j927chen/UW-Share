@@ -10,6 +10,7 @@ import SwiftUI
 import Firebase
 
 struct SignUpView: View {
+    @EnvironmentObject var navigator: Navigator
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmedPassword: String = ""
@@ -19,9 +20,12 @@ struct SignUpView: View {
         VStack {
             VStack {
                 HStack {
-                    Button("<--"){
-                        // go to login view
-                    }
+                    Button(action: {
+                        self.navigator.currentView = "Login"
+                        }) {Text("<--")}
+                        .padding()
+                        .foregroundColor(.black)
+                        .background(Color.yellow)
                     Spacer()
                 }
                 Text("Welcome to")
@@ -112,7 +116,7 @@ struct SignUpView: View {
     
    struct SignUpView_Previews: PreviewProvider {
         static var previews: some View {
-            SignUpView()
+            SignUpView().environmentObject(Navigator())
         }
     }
 }

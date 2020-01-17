@@ -11,6 +11,7 @@ import Firebase
 import AVKit
 
 struct LoginView: View {
+    @EnvironmentObject var navigator: Navigator
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var loginErrorMessage: String = ""
@@ -58,12 +59,16 @@ struct LoginView: View {
                 .foregroundColor(.white)
                 .padding(10)
                 .border(Color.orange, width: 5)
+            Button(action: {
+                self.navigator.currentView = "Sign Up"
+                }) {Text("Sign Up")}
+                .padding()
         }
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView().environmentObject(Navigator())
     }
 }

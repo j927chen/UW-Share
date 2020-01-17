@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		17520DB96C25A7EF1961DB90 /* Pods_UWShareTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F47FD1172B2A53ACE97FFB /* Pods_UWShareTests.framework */; };
 		9649E23123CC12FE008BBFC2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9649E23023CC12FE008BBFC2 /* LoginView.swift */; };
+		967DA58223D15DC2009B10A3 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967DA58123D15DC2009B10A3 /* MotherView.swift */; };
+		967DA58423D15E67009B10A3 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967DA58323D15E67009B10A3 /* Navigator.swift */; };
 		9683006523C8272F00AAC733 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9683006423C8272F00AAC733 /* GoogleService-Info.plist */; };
 		9683006623C8272F00AAC733 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9683006423C8272F00AAC733 /* GoogleService-Info.plist */; };
 		9683006723C8272F00AAC733 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9683006423C8272F00AAC733 /* GoogleService-Info.plist */; };
@@ -46,6 +48,8 @@
 		7802717395B29DAEE0EBF3B2 /* Pods-UWShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UWShare.debug.xcconfig"; path = "Target Support Files/Pods-UWShare/Pods-UWShare.debug.xcconfig"; sourceTree = "<group>"; };
 		900C9E59655D77EA4844F49D /* Pods-UWShareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UWShareTests.release.xcconfig"; path = "Target Support Files/Pods-UWShareTests/Pods-UWShareTests.release.xcconfig"; sourceTree = "<group>"; };
 		9649E23023CC12FE008BBFC2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		967DA58123D15DC2009B10A3 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
+		967DA58323D15E67009B10A3 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		9683006423C8272F00AAC733 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		96E9D4A023C5530E002D949F /* UWShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UWShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E9D4A323C5530E002D949F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 				96E9D4A323C5530E002D949F /* AppDelegate.swift */,
 				96E9D4A523C5530E002D949F /* SceneDelegate.swift */,
 				96E9D4A723C5530E002D949F /* SignUpView.swift */,
+				967DA58123D15DC2009B10A3 /* MotherView.swift */,
+				967DA58323D15E67009B10A3 /* Navigator.swift */,
 				9649E23023CC12FE008BBFC2 /* LoginView.swift */,
 				96E9D4A923C5530F002D949F /* Assets.xcassets */,
 				9683006423C8272F00AAC733 /* GoogleService-Info.plist */,
@@ -426,6 +432,8 @@
 				96E9D4A623C5530E002D949F /* SceneDelegate.swift in Sources */,
 				9649E23123CC12FE008BBFC2 /* LoginView.swift in Sources */,
 				96E9D4A823C5530E002D949F /* SignUpView.swift in Sources */,
+				967DA58223D15DC2009B10A3 /* MotherView.swift in Sources */,
+				967DA58423D15E67009B10A3 /* Navigator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
