@@ -23,11 +23,11 @@ struct SignUpView: View {
                     Button(action: {
                         self.navigator.currentView = "Login"
                         }) {Text("<--")}
-                        .frame(width: 80, height: 30)
+                        .frame(width: 70, height: 25)
                         .foregroundColor(.black)
                         .background(Color.yellow)
                         .cornerRadius(10.0)
-                        .padding()
+                        //.padding()
                     Spacer()
                 }
                 Text("Welcome to")
@@ -36,7 +36,7 @@ struct SignUpView: View {
                     .font(.largeTitle)
             }.foregroundColor(.yellow)
             Image("University of Waterloo Logo")
-            Spacer()
+            //Spacer()
             Text("❌ " + self.signUpErrorMessage)
                 .opacity(self.signUpErrorMessageOpacity)
                 .foregroundColor(.red)
@@ -45,21 +45,27 @@ struct SignUpView: View {
                     .foregroundColor(.yellow)
                     .bold()
                 TextField("Enter your Email", text: $email)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .background(LoginView().lightGrey)
+                    .cornerRadius(10.0)
             }.padding()
             VStack (alignment: .leading) {
                 Text("Create Your Password")
                     .foregroundColor(.yellow)
                     .bold()
                 SecureField("Make sure your password is strong", text: $password)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .background(LoginView().lightGrey)
+                    .cornerRadius(10.0)
             }.padding()
             VStack (alignment: .leading) {
                 Text("Confirm Your Password")
                     .foregroundColor(.yellow)
                     .bold()
-                SecureField("Making sure there are no typos", text: $confirmedPassword)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                SecureField("Make sure there are no typos", text: $confirmedPassword)
+                    .padding()
+                    .background(LoginView().lightGrey)
+                    .cornerRadius(10.0)
             }.padding()
             Button(action: {
                 self.signUpErrorMessageOpacity = 0

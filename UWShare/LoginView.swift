@@ -10,6 +10,7 @@ import SwiftUI
 import Firebase
 
 struct LoginView: View {
+    let lightGrey: Color = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
     @EnvironmentObject private var navigator: Navigator
     @State private var email: String = ""
     @State private var password: String = ""
@@ -32,14 +33,18 @@ struct LoginView: View {
                 .foregroundColor(.yellow)
                 .bold()
             TextField("Enter your Email", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+                .background(lightGrey)
+                .cornerRadius(10.0)
             }.padding()
             VStack (alignment: .leading) {
                 Text("Enter your password")
                     .foregroundColor(.yellow)
                     .bold()
                 SecureField("Enter your password", text: $password)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .background(lightGrey)
+                    .cornerRadius(10.0)
             }.padding()
             Button(action: {
                 self.loginErrorMessageOpacity = 0
