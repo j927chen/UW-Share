@@ -8,10 +8,9 @@
 
 import SwiftUI
 import Firebase
-import AVKit
 
 struct LoginView: View {
-    @EnvironmentObject var navigator: Navigator
+    @EnvironmentObject private var navigator: Navigator
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var loginErrorMessage: String = ""
@@ -54,14 +53,14 @@ struct LoginView: View {
                     }
                 }
             }) {Text("Login")}
-                .padding()
+                .frame(width: 350, height: 50)
                 .background(Color.orange)
                 .foregroundColor(.white)
-                .padding(10)
-                .border(Color.orange, width: 5)
+                .cornerRadius(10.0)
+                .padding()
             Button(action: {
                 self.navigator.currentView = "Sign Up"
-                }) {Text("Sign Up")}
+                }) {Text("Don't have an account? Sign up now!")}
                 .padding()
         }
     }

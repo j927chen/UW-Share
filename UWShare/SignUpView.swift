@@ -10,7 +10,7 @@ import SwiftUI
 import Firebase
 
 struct SignUpView: View {
-    @EnvironmentObject var navigator: Navigator
+    @EnvironmentObject private var navigator: Navigator
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmedPassword: String = ""
@@ -23,9 +23,11 @@ struct SignUpView: View {
                     Button(action: {
                         self.navigator.currentView = "Login"
                         }) {Text("<--")}
-                        .padding()
+                        .frame(width: 80, height: 30)
                         .foregroundColor(.black)
                         .background(Color.yellow)
+                        .cornerRadius(10.0)
+                        .padding()
                     Spacer()
                 }
                 Text("Welcome to")
@@ -86,11 +88,11 @@ struct SignUpView: View {
                 }
 
             }) {Text("Sign Up!")
-                .padding()
+                .frame(width: 350, height: 50)
                 .background(Color.purple)
                 .foregroundColor(.white)
-                .padding(10)
-                .border(Color.purple, width: 5)
+                .cornerRadius(10.0)
+                .padding()
             }
         }
     }
