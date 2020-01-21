@@ -13,10 +13,19 @@ struct MotherView: View {
     var body: some View {
         VStack {
             if navigator.currentView == "Login" {
-                LoginView()
+                LoginView().transition(.slide)
             }
             else if navigator.currentView == "Sign Up" {
                 SignUpView().transition(.slide)
+            }
+            else if navigator.currentView == "SentEmailVerification" {
+                SentEmailVerification().transition(.slide)
+            }
+            else if navigator.currentView == "Onboarding" {
+                Onboarding().transition(.slide)
+            }
+            else if navigator.currentView == "Dashboard" {
+                Dashboard().transition(.opacity)
             }
         }
     }

@@ -22,12 +22,13 @@ struct LoginView: View {
                 .bold()
                 .font(.largeTitle)
                 .foregroundColor(.yellow)
-            Image("Login")
-                .clipShape(Circle())
+            Image("Geese")
+                .resizable()
             Spacer()
             Text("❌ " + self.loginErrorMessage)
                 .opacity(loginErrorMessageOpacity)
                 .foregroundColor(.red)
+                .animation(Animation.default)
             VStack(alignment: .leading) {
             Text("Sign in with Email")
                 .foregroundColor(.yellow)
@@ -50,11 +51,18 @@ struct LoginView: View {
                 self.loginErrorMessageOpacity = 0
                 Auth.auth().signIn(withEmail: self.email, password: self.password) { (result, error) in
                     if error != nil {
-                        print(error?.localizedDescription)
+                        print(error!.localizedDescription)
                         self.loginErrorMessage = error!.localizedDescription
                         self.loginErrorMessageOpacity = 1
                     } else {
-                        print("User successfully logged in!")
+                        if Auth.auth().currentUser!.isEmailVerified {
+                            print("User successfully logged in!")
+                            self.navigator.currentView = "Onboarding"
+                        }
+                        else {
+                            self.loginErrorMessage = "Email not verified yet."
+                            self.loginErrorMessageOpacity = 1
+                        }
                     }
                 }
             }) {Text("Login")}

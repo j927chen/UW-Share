@@ -22,7 +22,7 @@ struct SignUpView: View {
                 HStack {
                     Button(action: {
                         self.navigator.currentView = "Login"
-                        }) {Text("<--")}
+                    }) {Image(systemName: "arrow.left")}
                         .frame(width: 70, height: 25)
                         .foregroundColor(.black)
                         .background(Color.yellow)
@@ -36,10 +36,12 @@ struct SignUpView: View {
                     .font(.largeTitle)
             }.foregroundColor(.yellow)
             Image("University of Waterloo Logo")
-            //Spacer()
+                .resizable()
+                .aspectRatio(contentMode: .fit)
             Text("❌ " + self.signUpErrorMessage)
                 .opacity(self.signUpErrorMessageOpacity)
                 .foregroundColor(.red)
+                .animation(Animation.default)
             VStack (alignment: .leading) {
                 Text("Enter your Email")
                     .foregroundColor(.yellow)
@@ -84,6 +86,7 @@ struct SignUpView: View {
                                     self.signUpErrorMessageOpacity = 1
                                 } else {
                                     print("Sent email verification to " + self.email)
+                                    self.navigator.currentView = "SentEmailVerification"
                                 }
                             }
                         }
