@@ -10,7 +10,18 @@ import SwiftUI
 
 struct Dashboard: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            Text("Hello World")
+            .tabItem {
+                Image(systemName: "house")
+                Text("Home")
+            }
+            Text("Ni hao")
+            .tabItem {
+                Image(systemName: "gear")
+                Text("Settings")
+            }
+        }
     }
 }
 

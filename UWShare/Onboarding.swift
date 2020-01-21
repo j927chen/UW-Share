@@ -17,6 +17,8 @@ struct Onboarding: View {
         UIHostingController(rootView: SubImageView(imageName: "Carpooling", title: "Carpooling", description: "Never fret with transportation worries again with the number of daily ride share postings here."))]
     var body: some View {
         VStack {
+            Text("Swipe")
+                .foregroundColor(.gray)
             PageViewController(viewControllers: subImageViews)
                 .frame(height: 450)
             Spacer()

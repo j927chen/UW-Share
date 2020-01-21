@@ -21,12 +21,12 @@ struct SubImageView: View {
                     Image(imageName)
                         .resizable()
                         .clipped()
+                        .cornerRadius(10)
             }
             Text(description)
-                .foregroundColor(.gray)
                 .font(.subheadline)
                 .padding()
-        }
+        }.padding()            .background(Color.yellow).cornerRadius(28)
     }
 }
 
