@@ -17,8 +17,8 @@ struct Dashboard: View {
                 Post(from: "Waterloo", to: "Vancouver", poster: "andrewliu@uwaterloo.ca")
             }
             .tabItem {
-                Image(systemName: "Ride Share")
-                Text("House")
+                Image(systemName: "house")
+                Text("Ride Share")
             }
             Settings()
             .tabItem {
