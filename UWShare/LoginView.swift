@@ -30,10 +30,10 @@ struct LoginView: View {
                 .foregroundColor(.red)
                 .animation(Animation.default)
             VStack(alignment: .leading) {
-            Text("Sign in with Email")
+            Text("Sign in with email")
                 .foregroundColor(.yellow)
                 .bold()
-            TextField("Enter your Email", text: $email)
+            TextField("Enter your email", text: $email)
                 .padding()
                 .background(lightGrey)
                 .cornerRadius(10.0)

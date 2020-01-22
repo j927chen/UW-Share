@@ -11,12 +11,16 @@ import SwiftUI
 struct Dashboard: View {
     var body: some View {
         TabView {
-            Text("Hello World")
-            .tabItem {
-                Image(systemName: "house")
-                Text("Home")
+            List{
+                Post(from: "Waterloo", to: "Toronto", poster: "j927chen@edu.uwaterloo.ca" )
+                Post(from: "Waterloo", to: "Montreal", poster: "wajoxi7778@etcone.net")
+                Post(from: "Waterloo", to: "Vancouver", poster: "andrewliu@uwaterloo.ca")
             }
-            Text("Ni hao")
+            .tabItem {
+                Image(systemName: "Ride Share")
+                Text("House")
+            }
+            Settings()
             .tabItem {
                 Image(systemName: "gear")
                 Text("Settings")
