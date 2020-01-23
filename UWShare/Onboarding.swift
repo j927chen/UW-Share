@@ -21,7 +21,6 @@ struct Onboarding: View {
                 .foregroundColor(.gray)
             PageViewController(viewControllers: subImageViews)
                 .frame(height: 450)
-            Spacer()
             Button(action: {
                 self.navigator.currentView = "Dashboard"
         }) {Text("Got it!")

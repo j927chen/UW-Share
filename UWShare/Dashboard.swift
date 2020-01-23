@@ -12,9 +12,9 @@ struct Dashboard: View {
     var body: some View {
         TabView {
             List{
-                Post(from: "Waterloo", to: "Toronto", poster: "j927chen@edu.uwaterloo.ca" )
-                Post(from: "Waterloo", to: "Montreal", poster: "wajoxi7778@etcone.net")
-                Post(from: "Waterloo", to: "Vancouver", poster: "andrewliu@uwaterloo.ca")
+                RideSharePost(postType: "Ride Share Request", initialLocation: "Waterloo", destination: "Toronto", poster: "j927chen@edu.uwaterloo.ca", description: "asdads" )
+                RideSharePost(postType: "Ride Share Offer", initialLocation: "Waterloo", destination: "Montreal", poster: "wajoxi7778@etcone.net", description: "adasdads")
+                RideSharePost(postType: "Ride Share Request", initialLocation: "Waterloo", destination: "Vancouver", poster: "andrewliu@uwaterloo.ca", description: "asdasds")
             }
             .tabItem {
                 Image(systemName: "house")

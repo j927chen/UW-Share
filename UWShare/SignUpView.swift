@@ -106,6 +106,9 @@ struct SignUpView: View {
         }
     }
     
+    func viewDidLoad() {
+        
+    }
     /* Returns whether the two password fields match */
     private func passwordsMatch(password: String, confirmedPassword: String) -> Bool {
         return password == confirmedPassword
