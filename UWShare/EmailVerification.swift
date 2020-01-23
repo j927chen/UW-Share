@@ -11,36 +11,44 @@ import Firebase
 
 struct EmailVerification: View {
     @EnvironmentObject private var navigator: Navigator
-    @State private var errorMessage: String = ""
-    @State private var errorMessageOpacity:  Double = 0
+    @State private var message: String = ""
+    @State private var messageOpacity: Double = 0
     var body: some View {
         VStack{
-            Text("Verification email sent to " + (Auth.auth().currentUser?.email)!)
+            Text("Verification email sent to")
                 .font(.largeTitle)
                 .foregroundColor(Color.red)
+            Text((Auth.auth().currentUser?.email)!)
+                .font(.title)
             Text("Please click on the link")
                 .font(.subheadline)
                 .foregroundColor(Color.orange)
             Image("Checkmark")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-            Text("❌ " + self.errorMessage)
-                .foregroundColor(Color.red)
+            if message == "Another email sent!" {
+                Text(message).foregroundColor(.green).opacity(messageOpacity)
+                
+            }
+            else {
+                Text(message).foregroundColor(.red).opacity(messageOpacity)
+            }
             Button(action: {
-                self.errorMessageOpacity = 0
+                self.messageOpacity = 0
                 Auth.auth().currentUser?.sendEmailVerification{ (error) in
                     if error != nil {
                         print(error?.localizedDescription)
-                        self.errorMessage = error!.localizedDescription
-                        self.errorMessageOpacity = 1
+                        self.message = "❌ " + error!.localizedDescription
                     } else {
                         print("Sent email verification to " + (Auth.auth().currentUser?.email)!)
+                        self.message = "Another email sent!"
                     }
                 }
+                self.messageOpacity = 1
             }) {Text("Resend email verification link")}
             .frame(width: 350, height: 50)
-            .background(Color.white)
-            .foregroundColor(.black)
+            .background(Color.black)
+            .foregroundColor(.white)
             .cornerRadius(10.0)
             .padding()
             Button(action: {
