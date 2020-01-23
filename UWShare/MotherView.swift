@@ -18,8 +18,8 @@ struct MotherView: View {
             else if navigator.currentView == "Sign Up" {
                 SignUpView().transition(.slide)
             }
-            else if navigator.currentView == "SentEmailVerification" {
-                SentEmailVerification().transition(.slide)
+            else if navigator.currentView == "EmailVerification" {
+                EmailVerification().transition(.slide)
             }
             else if navigator.currentView == "Onboarding" {
                 Onboarding().transition(.slide)

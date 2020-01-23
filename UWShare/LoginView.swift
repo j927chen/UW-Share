@@ -60,8 +60,7 @@ struct LoginView: View {
                             self.navigator.currentView = "Onboarding"
                         }
                         else {
-                            self.loginErrorMessage = "Email not verified yet."
-                            self.loginErrorMessageOpacity = 1
+                            self.navigator.currentView = "EmailVerification"
                         }
                     }
                 }

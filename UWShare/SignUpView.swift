@@ -86,7 +86,7 @@ struct SignUpView: View {
                                     self.signUpErrorMessageOpacity = 1
                                 } else {
                                     print("Sent email verification to " + self.email)
-                                    self.navigator.currentView = "SentEmailVerification"
+                                    self.navigator.currentView = "EmailVerification"
                                 }
                             }
                         }
