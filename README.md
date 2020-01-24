@@ -1,12 +1,11 @@
 # UW-Share
 
-UW Share is an up-coming resource-sharing app for the community of Waterloo.
+UW Share is an upcoming resource sharing app for the community of the University of Waterloo.
 
-Have you ever needed a carpool ride to get to and from campus but didn't know where to find one? Do you need to sublet your 
-room as soon as possible? Do you need a textbook for a chemistry class but didn't want to buy the expensive book store one?
+Have you ever needed a carpool ride because of a GRT strike but you didn't know where to find one? Do you need to sublet your 
+room as soon as possible? Do you want an expensive chemistry textbook on a low budget?
 
-Well look no longer! UW Share provides many services to offer and request carpooling, subletting, and materials loaning all in
-one cool app. Join the awesome community of UW students and help each other out.
+Well, look no longer! UW Share provides many services to offer and request carpooling, subletting, and materials loaning all in one cool app. Join the awesome community of UW students and help each other out.
 
 # Security
 
@@ -15,8 +14,8 @@ UW Share leverages Google Firebase Authentication to ensure user data and privac
 # Features
 
 - Personal accounts: email/password login, email verification.
-- Post ride sharing requests and answer those requests.
-- Personalize your profile with a cute portrait!
+- Post ride sharing, lodging requests and answer those requests.
+- Personalize your profile with personal information and a cute profile pic!
 
 # Screenshots
 
