@@ -9,36 +9,32 @@
 import SwiftUI
 
 struct RideSharePost: View {
-     let postType: String
-     let initialLocation: String
-     let destination: String
-     let poster: String
-     let description: String
+    @State var info: RideSharePostInfo
         var body: some View {
             VStack {
-                Text(postType)
+                Text(self.info.getPostType())
                     .fontWeight(.black)
                 HStack{
-                    Text("From " + self.initialLocation)
+                    Text("From " + self.info.getInitialLocation())
                         .foregroundColor(.secondary)
                     Spacer()
-                    Text("To " + self.destination)
+                    Text("To " + self.info.getDestination())
                         .foregroundColor(.secondary)
                 }
                     HStack {
-                        Image(self.initialLocation)
+                        Image(self.info.getInitialLocation())
                             .resizable()
                             .frame(width: 160, height: 160)
                         .cornerRadius(7.0)
-                        Image(self.destination)
+                        Image(self.info.getDestination())
                             .resizable()
                             .frame(width: 160, height: 160)
                         .cornerRadius(7.0)
                     }
-                Text(poster)
+                Text(self.info.getPoster())
                     .font(.subheadline)
                     .padding()
-                Text(description)
+                Text(self.info.getDescription())
                     .font(.caption)
                     .lineLimit(3)
                 Button(action: {

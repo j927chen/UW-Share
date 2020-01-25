@@ -9,13 +9,14 @@
 import SwiftUI
 
 struct Dashboard: View {
+    @State var rideSharePostsInfo: [RideSharePostInfo] = [.init(id: 0, poster: "j927chen@edu.uwaterloo.ca", description: "Urgent! Please help!", initialLocation: "Waterloo", destination: "Toronto"),
+    .init(id: 1, poster: "andrewLiu1@edu.uwaterloo.ca", description: "Will accept payment in flex dollars", initialLocation: "Waterloo", destination: "Montreal"),
+    .init(id: 2, poster: "ViktorCreed@gmail.com", description: "Please and thank you!", initialLocation: "Vancouver", destination: "Montreal")]
     var body: some View {
         TabView {
             ZStack(alignment: .topTrailing) {
-                List {
-                    RideSharePost(postType: "Ride Share Request", initialLocation: "Waterloo", destination: "Toronto", poster: "j927chen@edu.uwaterloo.ca", description: "Help! Urgent!" )
-                    RideSharePost(postType: "Ride Share Offer", initialLocation: "Waterloo", destination: "Montreal", poster: "wajoxi7778@etcone.net", description: "Payment in Flex dollars")
-                    RideSharePost(postType: "Ride Share Request", initialLocation: "Waterloo", destination: "Vancouver", poster: "andrewliu@uwaterloo.ca", description: "Please and Thank you!")
+                List(rideSharePostsInfo, id: \.id) {
+                    rideSharePost in RideSharePost(info: rideSharePost)
                 }
                 Button(action: {
                     // go to create post page
