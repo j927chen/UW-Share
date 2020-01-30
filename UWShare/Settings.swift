@@ -10,13 +10,15 @@ import SwiftUI
 import Firebase
 
 struct Settings: View {
+    @EnvironmentObject private var navigator: Navigator
+    private let email = Auth.auth().currentUser?.email
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
                 Text("Settings")
                     .font(.largeTitle)
                     .bold()
-                Text("Logged in as " + (Auth.auth().currentUser!.email)!)
+                Text("Logged in as " + self.email!)
                     .font(.title)
                     .foregroundColor(.gray)
             }
@@ -47,6 +49,13 @@ struct Settings: View {
             .cornerRadius(7.0)
             .padding()
             Button(action: {
+                do {
+                    try Auth.auth().signOut()
+                    print("User successfully logged out!")
+                    self.navigator.currentView = "Login"
+                } catch let signOutError as NSError {
+                  print ("Error signing out: %@", signOutError)
+                }
             }) {Text("Signout")}
             .frame(width: 200, height: 50)
             .background(Color.gray)
@@ -59,6 +68,6 @@ struct Settings: View {
 
 struct Settings_Previews: PreviewProvider {
     static var previews: some View {
-        Settings()
+        Settings().environmentObject(Navigator())
     }
 }

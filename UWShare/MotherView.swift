@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct MotherView: View {
-    @EnvironmentObject var navigator: Navigator
+    @EnvironmentObject private var navigator: Navigator
     var body: some View {
         VStack {
             if navigator.currentView == "Login" {
