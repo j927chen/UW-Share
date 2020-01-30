@@ -28,6 +28,9 @@
 		96E9D4AD23C5530F002D949F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E9D4AC23C5530F002D949F /* Preview Assets.xcassets */; };
 		96E9D4BB23C55310002D949F /* UWShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E9D4BA23C55310002D949F /* UWShareTests.swift */; };
 		96E9D4C623C55310002D949F /* UWShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E9D4C523C55310002D949F /* UWShareUITests.swift */; };
+		96F7CFC223E272CD00F181CD /* CreatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F7CFC123E272CD00F181CD /* CreatePost.swift */; };
+		96F7CFC423E279FF00F181CD /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F7CFC323E279FF00F181CD /* MultilineTextField.swift */; };
+		96F7CFC623E2821100F181CD /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F7CFC523E2821100F181CD /* MapView.swift */; };
 		96F86B8923DBF660009ECDE9 /* PostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F86B8823DBF660009ECDE9 /* PostInfo.swift */; };
 		D03E21450D31154AF07C82F4 /* Pods_UWShare_UWShareUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCE78840446A9A5958D2BC44 /* Pods_UWShare_UWShareUITests.framework */; };
 		D8B7DF7D22E2C782E311FB51 /* Pods_UWShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA29EE8C955AA3279785064 /* Pods_UWShare.framework */; };
@@ -79,6 +82,9 @@
 		96E9D4C123C55310002D949F /* UWShareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UWShareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E9D4C523C55310002D949F /* UWShareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UWShareUITests.swift; sourceTree = "<group>"; };
 		96E9D4C723C55310002D949F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96F7CFC123E272CD00F181CD /* CreatePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePost.swift; sourceTree = "<group>"; };
+		96F7CFC323E279FF00F181CD /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
+		96F7CFC523E2821100F181CD /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		96F86B8823DBF660009ECDE9 /* PostInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfo.swift; sourceTree = "<group>"; };
 		A75618E22A3106377A0370B2 /* Pods-UWShare-UWShareUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UWShare-UWShareUITests.debug.xcconfig"; path = "Target Support Files/Pods-UWShare-UWShareUITests/Pods-UWShare-UWShareUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3E0DA32965622F5CC1BFA10 /* Pods-UWShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UWShare.release.xcconfig"; path = "Target Support Files/Pods-UWShare/Pods-UWShare.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,9 +165,12 @@
 				96B847BF23D6948100B9F7BC /* Dashboard.swift */,
 				96B847C123D6974000B9F7BC /* SubImageView.swift */,
 				96B847C523D69BBC00B9F7BC /* PageViewController.swift */,
+				96F7CFC123E272CD00F181CD /* CreatePost.swift */,
 				96F86B8823DBF660009ECDE9 /* PostInfo.swift */,
+				96F7CFC523E2821100F181CD /* MapView.swift */,
 				96E9D4A723C5530E002D949F /* SignUpView.swift */,
 				967DA58123D15DC2009B10A3 /* MotherView.swift */,
+				96F7CFC323E279FF00F181CD /* MultilineTextField.swift */,
 				967DA58323D15E67009B10A3 /* Navigator.swift */,
 				9649E23023CC12FE008BBFC2 /* LoginView.swift */,
 				96E9D4A923C5530F002D949F /* Assets.xcassets */,
@@ -455,17 +464,20 @@
 				96E9D4A423C5530E002D949F /* AppDelegate.swift in Sources */,
 				96B847BE23D68D4F00B9F7BC /* EmailVerification.swift in Sources */,
 				96B847C623D69BBC00B9F7BC /* PageViewController.swift in Sources */,
+				96F7CFC223E272CD00F181CD /* CreatePost.swift in Sources */,
 				96B847C423D69A5600B9F7BC /* Onboarding.swift in Sources */,
 				96E36BEE23D7F75E00B35C39 /* RideSharePost.swift in Sources */,
 				96F86B8923DBF660009ECDE9 /* PostInfo.swift in Sources */,
 				96B847C023D6948100B9F7BC /* Dashboard.swift in Sources */,
 				96E9D4A623C5530E002D949F /* SceneDelegate.swift in Sources */,
+				96F7CFC623E2821100F181CD /* MapView.swift in Sources */,
 				96E36BEC23D7F29F00B35C39 /* Settings.swift in Sources */,
 				9649E23123CC12FE008BBFC2 /* LoginView.swift in Sources */,
 				96E9D4A823C5530E002D949F /* SignUpView.swift in Sources */,
 				967DA58223D15DC2009B10A3 /* MotherView.swift in Sources */,
 				967DA58423D15E67009B10A3 /* Navigator.swift in Sources */,
 				96B847C223D6974000B9F7BC /* SubImageView.swift in Sources */,
+				96F7CFC423E279FF00F181CD /* MultilineTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct Dashboard: View {
-    @State var rideSharePostsInfo: [RideSharePostInfo] = [.init(id: 0, poster: "j927chen@edu.uwaterloo.ca", description: "Urgent! Please help!", initialLocation: "Waterloo", destination: "Toronto"),
-    .init(id: 1, poster: "andrewLiu1@edu.uwaterloo.ca", description: "Will accept payment in flex dollars", initialLocation: "Waterloo", destination: "Montreal"),
-    .init(id: 2, poster: "ViktorCreed@gmail.com", description: "Please and thank you!", initialLocation: "Vancouver", destination: "Montreal")]
+    @EnvironmentObject private var navigator: Navigator
+    @State var rideSharePostsInfo: [RideSharePostInfo] = [.init(id: "asd", poster: "j927chen@edu.uwaterloo.ca", description: "Urgent! Please help!", initialLocation: "Waterloo", destination: "Toronto"),
+    .init(id: "xz", poster: "andrewLiu1@edu.uwaterloo.ca", description: "Will accept payment in flex dollars", initialLocation: "Waterloo", destination: "Montreal"),
+    .init(id: "dhs", poster: "ViktorCreed@gmail.com", description: "Please and thank you!", initialLocation: "Vancouver", destination: "Montreal")]
     var body: some View {
         TabView {
             ZStack(alignment: .topTrailing) {
@@ -19,7 +20,7 @@ struct Dashboard: View {
                     rideSharePost in RideSharePost(info: rideSharePost)
                 }
                 Button(action: {
-                    // go to create post page
+                    self.navigator.currentView = "CreatePost"
                 }) {Image(systemName: "pencil.circle.fill")
                     .resizable()
                     .frame(width: 80, height: 80)
@@ -46,6 +47,6 @@ struct Dashboard: View {
 
 struct Dashboard_Previews: PreviewProvider {
     static var previews: some View {
-        Dashboard()
+        Dashboard().environmentObject(Navigator())
     }
 }

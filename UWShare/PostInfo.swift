@@ -9,12 +9,12 @@
 import Foundation
 
 class PostInfo {
-    let id: Int
+    let id: String
     private let postType: String
     private let poster: String
     private var description: String
     
-    init(id: Int, postType: String, poster: String, description: String) {
+    init(id: String, postType: String, poster: String, description: String) {
         self.id = id
         self.postType = postType
         self.poster = poster
@@ -38,7 +38,7 @@ class RideSharePostInfo: PostInfo {
     private var initialLocation: String
     private var destination: String
     
-    init(id: Int, poster: String, description: String, initialLocation: String, destination: String) {
+    init(id: String, poster: String, description: String, initialLocation: String, destination: String) {
         self.initialLocation = initialLocation
         self.destination = destination
         super.init(id: id, postType: "Ride Share", poster: poster, description: description)
