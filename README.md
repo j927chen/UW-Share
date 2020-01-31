@@ -26,4 +26,5 @@ UW Share leverages Google Firebase Authentication to ensure user data and privac
 ![Onboarding screen](https://github.com/j927chen/UW-Share/blob/master/README_images/onboarding.png)
 ![Ride share posts](https://github.com/j927chen/UW-Share/blob/master/README_images/ride_share.png)
 ![Settings](https://github.com/j927chen/UW-Share/blob/master/README_images/settings.png)
+![Create Post](https://github.com/j927chen/UW-Share/blob/master/README_images/create_post.png)
 
