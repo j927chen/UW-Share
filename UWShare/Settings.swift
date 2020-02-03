@@ -11,14 +11,14 @@ import Firebase
 
 struct Settings: View {
     @EnvironmentObject private var navigator: Navigator
-    private let email = Auth.auth().currentUser?.email
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
                 Text("Settings")
                     .font(.largeTitle)
                     .bold()
-                Text("Logged in as " + self.email!)
+                
+                Text("Logged in as " + (Auth.auth().currentUser?.email ?? ""))
                     .font(.title)
                     .foregroundColor(.gray)
             }

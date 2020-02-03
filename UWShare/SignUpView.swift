@@ -27,7 +27,6 @@ struct SignUpView: View {
                         .foregroundColor(.black)
                         .background(Color.yellow)
                         .cornerRadius(10.0)
-                        //.padding()
                     Spacer()
                 }
                 Text("Welcome to")
