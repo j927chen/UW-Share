@@ -7,31 +7,40 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct Dashboard: View {
     @EnvironmentObject private var navigator: Navigator
-    @State var rideSharePostsInfo: [RideSharePostInfo] = [.init(id: "asd", poster: "j927chen@edu.uwaterloo.ca", description: "Urgent! Please help!", initialLocation: "Waterloo", destination: "Toronto"),
-    .init(id: "xz", poster: "andrewLiu1@edu.uwaterloo.ca", description: "Will accept payment in flex dollars", initialLocation: "Waterloo", destination: "Montreal"),
-    .init(id: "dhs", poster: "ViktorCreed@gmail.com", description: "Please and thank you!", initialLocation: "Vancouver", destination: "Montreal")]
+    @State var rideSharePostsInfo: [RideSharePostInfo] = []
     var body: some View {
         TabView {
+            ZStack(alignment: .topLeading) {
             ZStack(alignment: .topTrailing) {
                 List(rideSharePostsInfo, id: \.id) {
                     rideSharePost in RideSharePost(info: rideSharePost)
-                }
+                    }
                 Button(action: {
                     self.navigator.currentView = "CreatePost"
                 }) {Image(systemName: "pencil.circle.fill")
                     .resizable()
                     .frame(width: 80, height: 80)
                     .foregroundColor(Color(red: 153/255, green: 102/255, blue: 255/255))
+                }.padding()
+            }
+                Button(action: {
+                    self.getRideSharePosts()
+                }) {Text("Update")}
+                    .frame(width: 70, height: 30)
+                    .background(Color.orange)
+                    .foregroundColor(.white)
+                    .cornerRadius(10.0)
                     .shadow(color: .gray, radius: 0.4, x: 1, y: 1)
-                    }.padding()
+                    .padding()
             }.tabItem {
                 Image(systemName: "mappin")
                 Text("Ride Share")
                 }
-            Text("Subletting Posts")
+            Text("Subletting")
                 .tabItem {
                     Image(systemName: "house")
                     Text("Lodgings")
@@ -40,6 +49,20 @@ struct Dashboard: View {
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")
+                }
+        }
+    }
+    
+     func getRideSharePosts() {
+        let db = Firestore.firestore()
+        db.collection("posts").whereField("postType", isEqualTo: "ride share")
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting ride share posts: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        self.rideSharePostsInfo += [RideSharePostInfo(id: document.documentID, poster: (document.get("poster") as? String) ?? "", description: (document.get("description") as? String) ?? "", initialLocation: (document.get("starting location") as? String) ?? "", destination: (document.get("destination") as? String) ?? "")]
+                    }
                 }
         }
     }

@@ -25,8 +25,8 @@ struct CreatePost: View {
                 HStack {
                     Button(action: {
                         self.navigator.currentView = "Dashboard"
-                    }) {Image(systemName: "trash.circle.fill")}
-                        .frame(width: 50, height: 25)
+                    }) {Image(systemName: "clear")}
+                        .frame(width: 40, height: 25)
                         .foregroundColor(.black)
                         .background(Color.yellow)
                         .cornerRadius(10.0)
