@@ -26,7 +26,7 @@ struct Settings: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
             Button(action: {
-                // reset password
+                // change profile picture
             }) {Text("Change profile picture")}
             .frame(width: 200, height: 50)
             .background(Color.blue)
@@ -34,7 +34,7 @@ struct Settings: View {
             .cornerRadius(7.0)
             .padding()
             Button(action: {
-                // reset password
+                // change password
             }) {Text("Change password")}
             .frame(width: 200, height: 50)
             .background(Color.gray)
@@ -61,6 +61,10 @@ struct Settings: View {
             .background(Color.gray)
             .foregroundColor(.white)
             .cornerRadius(7.0)
+            .padding()
+            Button(action: {
+            }) {Text("More Options")}
+            .frame(width: 200, height: 30)
             .padding()
         }
     }

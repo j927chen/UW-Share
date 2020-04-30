@@ -20,7 +20,7 @@ struct Dashboard: View {
                     rideSharePost in RideSharePost(info: rideSharePost)
                     }
                 Button(action: {
-                    self.navigator.currentView = "CreatePost"
+                    self.navigator.currentView = "Create Post"
                 }) {Image(systemName: "pencil.circle.fill")
                     .resizable()
                     .frame(width: 80, height: 80)

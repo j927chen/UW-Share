@@ -27,7 +27,7 @@ struct MotherView: View {
             else if navigator.currentView == "Dashboard" {
                 Dashboard().transition(.opacity)
             }
-            else if navigator.currentView == "CreatePost" {
+            else if navigator.currentView == "Create Post" {
                 CreatePost().transition(.offset())
             }
         }
