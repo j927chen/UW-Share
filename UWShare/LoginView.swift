@@ -51,12 +51,20 @@ struct LoginView: View {
                 self.loginErrorMessageOpacity = 0
                 Auth.auth().signIn(withEmail: self.email, password: self.password) { (result, error) in
                     if error != nil {
-                        print(error!.localizedDescription)
-                        self.loginErrorMessage = error!.localizedDescription
+                        if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                            switch errorCode {
+                            case .invalidEmail:
+                                    self.loginErrorMessage = "Given email address is invalid!"
+                            case .wrongPassword:
+                                    self.loginErrorMessage = "Given password is incorrect!"
+                                default:
+                                    self.loginErrorMessage = "\(error)"
+                            }
+                        }
                         self.loginErrorMessageOpacity = 1
                     } else {
                         if Auth.auth().currentUser!.isEmailVerified {
-                            print("User successfully logged in!")
+                            print("User successfully logged in!") // developer purposes
                             self.navigator.currentView = "Onboarding"
                         }
                         else {
