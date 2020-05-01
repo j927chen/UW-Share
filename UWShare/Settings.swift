@@ -11,6 +11,7 @@ import Firebase
 
 struct Settings: View {
     @EnvironmentObject private var navigator: Navigator
+    @State private var message = "";
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
@@ -25,8 +26,9 @@ struct Settings: View {
             Image("default profile icon")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+            Text(message)
+                .foregroundColor(.green);
             Button(action: {
-                // change profile picture
             }) {Text("Change profile picture")}
             .frame(width: 200, height: 50)
             .background(Color.blue)
@@ -34,7 +36,8 @@ struct Settings: View {
             .cornerRadius(7.0)
             .padding()
             Button(action: {
-                // change password
+                Auth.auth().sendPasswordReset(withEmail: Auth.auth().currentUser?.email ?? "")
+                self.message = "Password reset email sent! Check your inbox"
             }) {Text("Change password")}
             .frame(width: 200, height: 50)
             .background(Color.gray)

@@ -45,7 +45,7 @@ struct SignUpView: View {
                 Text("Enter your Email")
                     .foregroundColor(.yellow)
                     .bold()
-                TextField("Enter your Email", text: $email)
+                TextField("Enter your email", text: $email)
                     .padding()
                     .background(LoginView().lightGrey)
                     .cornerRadius(10.0)
