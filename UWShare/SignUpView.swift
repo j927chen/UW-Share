@@ -73,8 +73,20 @@ struct SignUpView: View {
                 if self.passwordsMatch(password: self.password, confirmedPassword: self.confirmedPassword) {
                     Auth.auth().createUser(withEmail: self.email, password: self.password) { (result, error) in
                         if error != nil {
-                            print(error?.localizedDescription)
-                            self.signUpErrorMessage = error!.localizedDescription
+                            if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                                switch errorCode {
+                                case .missingEmail:
+                                    self.signUpErrorMessage = "Please enter a valid email address."
+                                case .invalidEmail:
+                                    self.signUpErrorMessage = "Given email address is invalid!"
+                                case .emailAlreadyInUse:
+                                    self.signUpErrorMessage = "This email address is already in use."
+                                case .weakPassword:
+                                    self.signUpErrorMessage = "Password must be at least 6 characters."
+                                default:
+                                    self.signUpErrorMessage = "\(error)"
+                                }
+                            }
                             self.signUpErrorMessageOpacity = 1
                         } else {
                             self.registerNewUser(email: self.email, password: self.password)
@@ -84,7 +96,7 @@ struct SignUpView: View {
                                     self.signUpErrorMessage = error!.localizedDescription
                                     self.signUpErrorMessageOpacity = 1
                                 } else {
-                                    print("Sent email verification to " + self.email)
+                                    print("Sent email verification to " + self.email) // developer purposes
                                     self.navigator.currentView = "EmailVerification"
                                 }
                             }
@@ -105,9 +117,6 @@ struct SignUpView: View {
         }
     }
     
-    func viewDidLoad() {
-        
-    }
     /* Returns whether the two password fields match */
     private func passwordsMatch(password: String, confirmedPassword: String) -> Bool {
         return password == confirmedPassword
@@ -122,7 +131,7 @@ struct SignUpView: View {
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
-                print("Document added with email: " + email)
+                print("Document added with email: " + email) // developer purposes
             }
         }
     }

@@ -54,11 +54,15 @@ struct LoginView: View {
                         if let errorCode = AuthErrorCode(rawValue: error!._code) {
                             switch errorCode {
                             case .invalidEmail:
-                                    self.loginErrorMessage = "Given email address is invalid!"
+                                self.loginErrorMessage = "Email address is invalid!"
+                            case .userNotFound:
+                                self.loginErrorMessage = "Email address is not registered."
+                            case .userDisabled:
+                                self.loginErrorMessage = "User's account with this email address has been suspended"
                             case .wrongPassword:
-                                    self.loginErrorMessage = "Given password is incorrect!"
-                                default:
-                                    self.loginErrorMessage = "\(error)"
+                                self.loginErrorMessage = "Password is incorrect!"
+                            default:
+                                self.loginErrorMessage = "\(error)"
                             }
                         }
                         self.loginErrorMessageOpacity = 1
