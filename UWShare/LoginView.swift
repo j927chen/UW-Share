@@ -87,7 +87,7 @@ struct LoginView: View {
                 }) {Text("Don't have an account? Sign up now!")}
                 .padding()
             Button(action: {
-                // send email reset password
+                // send password reset email
                 }) {Text("Forgot your password?")}
                 .padding()
         }

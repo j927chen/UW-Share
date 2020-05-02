@@ -37,10 +37,16 @@ struct EmailVerification: View {
                 self.messageOpacity = 0
                 Auth.auth().currentUser?.sendEmailVerification{ (error) in
                     if error != nil {
-                        print(error?.localizedDescription)
-                        self.message = "❌ " + error!.localizedDescription
+                        if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                            switch errorCode {
+                            case .tooManyRequests:
+                                self.message = "❌ Too many requests!"
+                            default:
+                                self.message = "❌ " + error!.localizedDescription;
+                            }
+                        }
                     } else {
-                        print("Sent email verification to " + (Auth.auth().currentUser?.email)!)
+                        print("Sent email verification to " + (Auth.auth().currentUser?.email)!) // developer purposes
                         self.message = "Another email sent!"
                     }
                 }
