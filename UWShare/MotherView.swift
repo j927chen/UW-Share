@@ -30,6 +30,9 @@ struct MotherView: View {
             else if navigator.currentView == "Create Post" {
                 CreatePost().transition(.offset())
             }
+            else if navigator.currentView == "Forgot Password" {
+                ForgotPassword().transition(.slide)
+            }
         }
     }
 }

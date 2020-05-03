@@ -87,7 +87,7 @@ struct LoginView: View {
                 }) {Text("Don't have an account? Sign up now!")}
                 .padding()
             Button(action: {
-                // send password reset email
+                self.navigator.currentView = "Forgot Password"
                 }) {Text("Forgot your password?")}
                 .padding()
         }
