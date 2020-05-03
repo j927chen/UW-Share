@@ -1,6 +1,6 @@
 //
 //  MapView.swift
-//  UWShare
+//  UW Share
 //
 //  Created by Jason Chen on 2020-01-29.
 //  Copyright © 2020 Jason Chen. All rights reserved.

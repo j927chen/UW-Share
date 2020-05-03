@@ -1,6 +1,6 @@
 //
 //  ForgotPassword.swift
-//  UWShare
+//  UW Share
 //
 //  Created by Jason Chen on 2020-05-03.
 //  Copyright © 2020 Jason Chen. All rights reserved.
