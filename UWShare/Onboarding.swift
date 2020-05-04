@@ -11,26 +11,49 @@ import UIKit
 
 struct Onboarding: View {
     @EnvironmentObject private var navigator: Navigator
-    var subImageViews = [
+    private var subImageViews = [
         UIHostingController(rootView: SubImageView(imageName: "Messaging", title: "Connect With UW", description: "UW Share allows you to help or ask for help within our large university community.")),
-        UIHostingController(rootView: SubImageView(imageName: "Security", title: "Security", description: "Your data and privacy is always secure and confidential no matter the situation")),
-        UIHostingController(rootView: SubImageView(imageName: "Carpooling", title: "Carpooling", description: "Never fret with transportation worries again with the number of daily ride share postings here."))]
+        UIHostingController(rootView: SubImageView(imageName: "Security", title: "Security", description: "Your data and privacy are always secure and confidential no matter the circumstances.")),
+        UIHostingController(rootView: SubImageView(imageName: "Carpooling", title: "Carpooling", description: "Never fret with transportation worries again with the number of daily ride share offers posted."))]
+    @State private var currentPageIndex = 0;
     var body: some View {
         VStack {
-            Text("Swipe")
-                .foregroundColor(.gray)
-            PageViewController(viewControllers: subImageViews)
-                .frame(height: 450)
-            Button(action: {
-                self.navigator.currentView = "Dashboard"
-        }) {Text("Got it!")
-            .frame(width: 350, height: 50)
-            .background(Color.red)
-            .foregroundColor(.white)
-            .cornerRadius(10.0)
-            .padding()
+                HStack {
+                    Image(systemName: "arrow.left")
+                    Text("Swipe")
+                }.foregroundColor(.gray)
+                PageViewController(viewControllers: subImageViews, currentPage: $currentPageIndex)
+                    .frame(height: 450)
+                Button(action: {
+                    self.navigator.currentView = "Dashboard"
+            })  {Text("Got it!")
+                .frame(width: 300, height: 50)
+                .background(Color.red)
+                .foregroundColor(.white)
+                .cornerRadius(10.0)
+                .padding()
+            }
+            PageControl(numberOfPages: subImageViews.count, currentPageIndex: $currentPageIndex)
         }
-        }
+    }
+}
+
+struct PageControl: UIViewRepresentable {
+    var numberOfPages: Int
+    
+    @Binding var currentPageIndex: Int
+    
+    func makeUIView(context: Context) -> UIPageControl {
+        let control = UIPageControl()
+        control.numberOfPages = numberOfPages
+        control.currentPageIndicatorTintColor = UIColor.yellow
+        control.pageIndicatorTintColor = UIColor.black
+        
+        return control
+    }
+    
+    func updateUIView(_ uiView: UIPageControl, context: Context) {
+        uiView.currentPage = currentPageIndex
     }
 }
 
