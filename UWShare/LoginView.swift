@@ -12,6 +12,7 @@ import Firebase
 struct LoginView: View {
     let lightGrey: Color = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
     @EnvironmentObject private var navigator: Navigator
+    @ObservedObject private var keyboardResponder = KeyboardResponder()
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var loginErrorMessage: String = ""
@@ -90,7 +91,7 @@ struct LoginView: View {
                 self.navigator.currentView = "Forgot Password"
                 }) {Text("Forgot your password?")}
                 .padding()
-        }
+        }.offset(y: -keyboardResponder.currentHeight * 0.9) // screen moves up when keyboard is toggled
     }
 }
 

@@ -20,6 +20,7 @@
 		96B847C423D69A5600B9F7BC /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B847C323D69A5600B9F7BC /* Onboarding.swift */; };
 		96B847C623D69BBC00B9F7BC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B847C523D69BBC00B9F7BC /* PageViewController.swift */; };
 		96D21AEC245E88230081B7C7 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D21AEB245E88230081B7C7 /* ForgotPassword.swift */; };
+		96DCF501245FBFD500F58307 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCF500245FBFD500F58307 /* KeyboardResponder.swift */; };
 		96E36BEC23D7F29F00B35C39 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E36BEB23D7F29F00B35C39 /* Settings.swift */; };
 		96E36BEE23D7F75E00B35C39 /* RideSharePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E36BED23D7F75E00B35C39 /* RideSharePost.swift */; };
 		96E9D4A423C5530E002D949F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E9D4A323C5530E002D949F /* AppDelegate.swift */; };
@@ -69,6 +70,7 @@
 		96B847C323D69A5600B9F7BC /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		96B847C523D69BBC00B9F7BC /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		96D21AEB245E88230081B7C7 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
+		96DCF500245FBFD500F58307 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		96E36BEB23D7F29F00B35C39 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		96E36BED23D7F75E00B35C39 /* RideSharePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideSharePost.swift; sourceTree = "<group>"; };
 		96E9D4A023C5530E002D949F /* UWShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UWShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,24 +160,25 @@
 		96E9D4A223C5530E002D949F /* UWShare */ = {
 			isa = PBXGroup;
 			children = (
-				96E9D4A523C5530E002D949F /* SceneDelegate.swift */,
-				96E9D4A323C5530E002D949F /* AppDelegate.swift */,
-				96D21AEB245E88230081B7C7 /* ForgotPassword.swift */,
-				96B847BD23D68D4F00B9F7BC /* EmailVerification.swift */,
 				96E36BED23D7F75E00B35C39 /* RideSharePost.swift */,
-				96B847C323D69A5600B9F7BC /* Onboarding.swift */,
-				96E36BEB23D7F29F00B35C39 /* Settings.swift */,
-				96B847BF23D6948100B9F7BC /* Dashboard.swift */,
+				96F86B8823DBF660009ECDE9 /* PostInfo.swift */,
+				96DCF500245FBFD500F58307 /* KeyboardResponder.swift */,
 				96B847C123D6974000B9F7BC /* SubImageView.swift */,
 				96B847C523D69BBC00B9F7BC /* PageViewController.swift */,
-				96F7CFC123E272CD00F181CD /* CreatePost.swift */,
-				96F86B8823DBF660009ECDE9 /* PostInfo.swift */,
 				96F7CFC523E2821100F181CD /* MapView.swift */,
 				96F7CFC323E279FF00F181CD /* MultilineTextField.swift */,
-				967DA58323D15E67009B10A3 /* Navigator.swift */,
+				96F7CFC123E272CD00F181CD /* CreatePost.swift */,
+				96E36BEB23D7F29F00B35C39 /* Settings.swift */,
+				96B847BF23D6948100B9F7BC /* Dashboard.swift */,
+				96B847C323D69A5600B9F7BC /* Onboarding.swift */,
+				96B847BD23D68D4F00B9F7BC /* EmailVerification.swift */,
+				96D21AEB245E88230081B7C7 /* ForgotPassword.swift */,
 				96E9D4A723C5530E002D949F /* SignUpView.swift */,
 				9649E23023CC12FE008BBFC2 /* LoginView.swift */,
+				967DA58323D15E67009B10A3 /* Navigator.swift */,
 				967DA58123D15DC2009B10A3 /* MotherView.swift */,
+				96E9D4A323C5530E002D949F /* AppDelegate.swift */,
+				96E9D4A523C5530E002D949F /* SceneDelegate.swift */,
 				96E9D4A923C5530F002D949F /* Assets.xcassets */,
 				9683006423C8272F00AAC733 /* GoogleService-Info.plist */,
 				96E9D4B123C5530F002D949F /* Info.plist */,
@@ -481,6 +484,7 @@
 				967DA58423D15E67009B10A3 /* Navigator.swift in Sources */,
 				96B847C223D6974000B9F7BC /* SubImageView.swift in Sources */,
 				96F7CFC423E279FF00F181CD /* MultilineTextField.swift in Sources */,
+				96DCF501245FBFD500F58307 /* KeyboardResponder.swift in Sources */,
 				96D21AEC245E88230081B7C7 /* ForgotPassword.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

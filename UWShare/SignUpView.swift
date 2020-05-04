@@ -11,6 +11,7 @@ import Firebase
 
 struct SignUpView: View {
     @EnvironmentObject private var navigator: Navigator
+    @ObservedObject private var keyboardResponder = KeyboardResponder()
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmedPassword: String = ""
@@ -114,7 +115,7 @@ struct SignUpView: View {
                 .cornerRadius(10.0)
                 .padding()
             }
-        }
+        }.offset(y: -keyboardResponder.currentHeight * 0.9) // screen moves up when keyboard is toggled
     }
     
     /* Returns whether the two password fields match */

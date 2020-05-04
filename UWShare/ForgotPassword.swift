@@ -11,6 +11,7 @@ import Firebase
 
 struct ForgotPassword: View {
     @EnvironmentObject private var navigator: Navigator
+    @ObservedObject private var keyboardResponder = KeyboardResponder()
     @State private var message = "message"
     @State private var messageOpacity: Double = 0
     @State private var email = "";
@@ -52,7 +53,7 @@ struct ForgotPassword: View {
             .cornerRadius(10.0)
             .padding()
             Spacer()
-        }
+        }.offset(y: -keyboardResponder.currentHeight * 0.8) // screen moves up when keyboard is toggled
     }
 }
 
