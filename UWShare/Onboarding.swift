@@ -19,10 +19,10 @@ struct Onboarding: View {
     var body: some View {
         VStack {
                 HStack {
-                    Image(systemName: "arrow.left")
                     Text("Swipe")
+                    Image(systemName: "arrow.right")
                 }.foregroundColor(.gray)
-                PageViewController(viewControllers: subImageViews, currentPage: $currentPageIndex)
+                PageViewController(viewControllers: subImageViews, currentPageIndex: $currentPageIndex)
                     .frame(height: 450)
                 Button(action: {
                     self.navigator.currentView = "Dashboard"
