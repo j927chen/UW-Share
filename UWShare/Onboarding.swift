@@ -28,13 +28,20 @@ struct Onboarding: View {
                     self.navigator.currentView = "Dashboard"
             })  {Text("Got it!")
                 .frame(width: 300, height: 50)
-                .background(Color.red)
                 .foregroundColor(.white)
+                .background(getButtonColor())
                 .cornerRadius(10.0)
                 .padding()
-            }
+                }.disabled(self.currentPageIndex != self.subImageViews.count - 1)
             PageControl(numberOfPages: subImageViews.count, currentPageIndex: $currentPageIndex)
         }
+    }
+    
+    private func getButtonColor() -> Color {
+        if self.currentPageIndex != self.subImageViews.count - 1 {
+            return Color.gray
+        }
+        return Color.red
     }
 }
 
