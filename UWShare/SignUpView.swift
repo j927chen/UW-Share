@@ -127,12 +127,12 @@ struct SignUpView: View {
     private func registerNewUser(email: String, password: String) {
         let db = Firestore.firestore()
         db.collection("users").document(email).setData([
-            "password": password
+            "password": password, "agreedToTerms": false // "emailVerified": false
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
-                print("Document added with email: " + email) // developer purposes
+                print("Document added with email: " + email + ", password: " + password) // developer purposes
             }
         }
     }

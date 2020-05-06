@@ -14,6 +14,12 @@ struct Dashboard: View {
     @State var rideSharePostsInfo: [RideSharePostInfo] = []
     var body: some View {
         TabView {
+            VStack {
+                Text("Hello World")
+            }.tabItem {
+                Image(systemName: "person")
+                Text("Dashboard")
+            }
             ZStack(alignment: .topLeading) {
             ZStack(alignment: .topTrailing) {
                 List(rideSharePostsInfo, id: \.id) {
