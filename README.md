@@ -1,4 +1,4 @@
-# UW-Share
+# UW Share
 
 UW Share is an upcoming resource sharing app for the community of the University of Waterloo.
 
