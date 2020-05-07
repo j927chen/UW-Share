@@ -18,6 +18,10 @@ struct SignUpView: View {
     @State private var signUpErrorMessage: String = ""
     @State private var signUpErrorMessageOpacity: Double = 0
     var body: some View {
+        ZStack {
+            PlayerView()
+                .overlay(Color.gray.opacity(0.3))
+                .edgesIgnoringSafeArea(.all)
         VStack {
             VStack {
                 HStack {
@@ -35,9 +39,10 @@ struct SignUpView: View {
                     .bold()
                     .font(.largeTitle)
             }.foregroundColor(.yellow)
+            /*
             Image("University of Waterloo Logo")
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fit)*/
             Text("❌ " + self.signUpErrorMessage)
                 .opacity(self.signUpErrorMessageOpacity)
                 .foregroundColor(.red)
@@ -116,6 +121,7 @@ struct SignUpView: View {
                 .padding()
             }
         }.offset(y: -keyboardResponder.currentHeight * 0.9) // screen moves up when keyboard is toggled
+        }
     }
     
     /* Returns whether the two password fields match */
