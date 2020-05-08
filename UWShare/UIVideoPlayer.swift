@@ -12,13 +12,18 @@ import AVKit
 
 class UIVideoPlayer: UIView {
     var playerLayer = AVPlayerLayer()
+    var videoLooper: AVPlayerLooper
     
-    override init(frame: CGRect) {
+    override init(frame: CGRect) { // add parameter for different urls
+        let url = URL(fileURLWithPath: Bundle.main.path(forResource: "sign up", ofType: "mp4")!)
+
+        let asset = AVAsset(url: url)
+        let item = AVPlayerItem(asset: asset)
+        let player = AVQueuePlayer(playerItem: item)
+        videoLooper = AVPlayerLooper(player: player, templateItem: item)
         super.init(frame: frame)
         
-        let url = URL(fileURLWithPath: Bundle.main.path(forResource: "sign up video", ofType: "mp4")!) 
-        
-        let player = AVPlayer(url: url)
+        //let player = AVPlayer(url: url)
         player.isMuted = true
         player.play()
         

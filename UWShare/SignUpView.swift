@@ -20,7 +20,7 @@ struct SignUpView: View {
     var body: some View {
         ZStack {
             PlayerView()
-                .overlay(Color.gray.opacity(0.3))
+                .opacity(0.8)
                 .edgesIgnoringSafeArea(.all)
         VStack {
             VStack {
