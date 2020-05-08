@@ -15,7 +15,7 @@ class UIVideoPlayer: UIView {
     var videoLooper: AVPlayerLooper
     
     override init(frame: CGRect) { // add parameter for different urls
-        let url = URL(fileURLWithPath: Bundle.main.path(forResource: "sign up", ofType: "mp4")!)
+        let url = URL(fileURLWithPath: Bundle.main.path(forResource: "sign up", ofType: "mp4")!) // THIS VIDEO FILE IS LOCAL TO MY MACBOOK!!!!!!!!!!!!!!!!!!!!!!!!!
 
         let asset = AVAsset(url: url)
         let item = AVPlayerItem(asset: asset)
