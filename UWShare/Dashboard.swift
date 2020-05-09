@@ -8,14 +8,34 @@
 
 import SwiftUI
 import Firebase
+import FirebaseStorage
 
 struct Dashboard: View {
+    let storage = Storage.storage()
     @EnvironmentObject private var navigator: Navigator
     @State var rideSharePostsInfo: [RideSharePostInfo] = []
+    @State var image = Image("Toronto")
     var body: some View {
         TabView {
             VStack {
-                Text("Hello World")
+                Button(action: {
+                    let pathReference = self.storage.reference(withPath: "users")
+                    let imageRef = pathReference.child("picture.png")
+                    
+                    imageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                      if let error = error {
+                        print("Error retrieving image: " + error.localizedDescription)
+                      } else {
+                        self.image = Image(uiImage: UIImage(data: data!)!)
+                      }
+                    }
+                }) {Text("Foo")}
+                    .frame(width: 70, height: 30)
+                    .background(Color.orange)
+                    .foregroundColor(.white)
+                    .cornerRadius(10.0)
+                    .padding()
+                image
             }.tabItem {
                 Image(systemName: "person")
                 Text("Dashboard")

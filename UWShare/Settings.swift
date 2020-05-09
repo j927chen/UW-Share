@@ -8,8 +8,10 @@
 
 import SwiftUI
 import Firebase
+import FirebaseStorage
 
 struct Settings: View {
+    let storage = Storage.storage()
     @EnvironmentObject private var navigator: Navigator
     @State private var message = "";
     var body: some View {
@@ -29,6 +31,14 @@ struct Settings: View {
             Text(message)
                 .foregroundColor(.green);
             Button(action: {
+                let storageRef = self.storage.reference()
+                let profilePicture = storageRef.child("users/picture.png")
+                let localFile = URL(fileURLWithPath: Bundle.main.path(forResource: "Geese", ofType: "png")!)
+                let uploadTask =  profilePicture.putFile(from: localFile, metadata: nil) { metadata, error in guard let metadata = metadata else {
+                    print("Error with image upload")
+                    return}
+                    let size = metadata.size
+                }
             }) {Text("Change profile picture")}
             .frame(width: 200, height: 50)
             .background(Color.blue)
