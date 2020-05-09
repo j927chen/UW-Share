@@ -18,20 +18,23 @@ struct MotherView: View {
             else if navigator.currentView == "Sign Up" {
                 SignUpView().transition(.slide)
             }
+            else if navigator.currentView == "Forgot Password" {
+                ForgotPassword().transition(.slide)
+            }
             else if navigator.currentView == "EmailVerification" {
                 EmailVerification().transition(.slide)
             }
             else if navigator.currentView == "Onboarding" {
                 Onboarding().transition(.slide)
             }
+            else if navigator.currentView == "Profile Setup" {
+                ProfileSetup().transition(.slide)
+            }
             else if navigator.currentView == "Dashboard" {
                 Dashboard().transition(.opacity)
             }
             else if navigator.currentView == "Create Post" {
                 CreatePost().transition(.offset())
-            }
-            else if navigator.currentView == "Forgot Password" {
-                ForgotPassword().transition(.slide)
             }
         }
     }

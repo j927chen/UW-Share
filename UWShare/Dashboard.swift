@@ -18,6 +18,14 @@ struct Dashboard: View {
     var body: some View {
         TabView {
             VStack {
+                VStack(alignment: .leading) {
+                    Text("Hello")
+                        .font(.largeTitle)
+                        .bold()
+                    Text(Auth.auth().currentUser?.displayName ?? "Username unavailable")
+                        .font(.title)
+                        .foregroundColor(.gray)
+                }
                 Button(action: {
                     let pathReference = self.storage.reference(withPath: "users")
                     let imageRef = pathReference.child("picture.png")
@@ -36,6 +44,11 @@ struct Dashboard: View {
                     .cornerRadius(10.0)
                     .padding()
                 image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(Circle())
+                Text("Points")
+                Text("Messages")
             }.tabItem {
                 Image(systemName: "person")
                 Text("Dashboard")

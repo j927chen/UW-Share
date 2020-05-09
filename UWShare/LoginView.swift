@@ -25,6 +25,7 @@ struct LoginView: View {
                 .foregroundColor(.yellow)
             Image("Geese")
                 .resizable()
+                .aspectRatio(contentMode: .fit)
             Spacer()
             Text("❌ " + self.loginErrorMessage)
                 .opacity(loginErrorMessageOpacity)
@@ -70,7 +71,12 @@ struct LoginView: View {
                     } else {
                         if Auth.auth().currentUser!.isEmailVerified {
                             print("User successfully logged in!") // developer purposes
-                            self.navigator.currentView = "Onboarding"
+                            if  Auth.auth().currentUser?.displayName == nil {
+                                self.navigator.currentView = "Onboarding"
+                            }
+                            else {
+                                self.navigator.currentView = "Dashboard"
+                            }
                         }
                         else {
                             self.navigator.currentView = "EmailVerification"

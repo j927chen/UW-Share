@@ -25,7 +25,7 @@ struct Onboarding: View {
                 PageViewController(viewControllers: subImageViews, currentPageIndex: $currentPageIndex)
                     .frame(height: 450)
                 Button(action: {
-                    self.navigator.currentView = "Dashboard"
+                    self.navigator.currentView = "Profile Setup"
             })  {Text("Got it!")
                 .frame(width: 300, height: 50)
                 .foregroundColor(.white)
