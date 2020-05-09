@@ -14,8 +14,8 @@ UW Share leverages Google Firebase Authentication to ensure user data and privac
 # Features
 
 - Personal accounts: email/password login, email verification, freedom to request data deletion.
-- Post ride sharing, lodging requests and answer those requests.
-- Personalize your profile with personal information and a cute profile pic!
+- Post ride sharing, lodging requests, and answer requests from others.
+- Personalize your profile with personal information and a cute profile picture!
 
 # Screenshots
 
