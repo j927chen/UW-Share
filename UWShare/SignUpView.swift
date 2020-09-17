@@ -78,8 +78,8 @@ struct SignUpView: View {
                 self.signUpErrorMessageOpacity = 0
                 if self.passwordsMatch(password: self.password, confirmedPassword: self.confirmedPassword) {
                     Auth.auth().createUser(withEmail: self.email, password: self.password) { (result, error) in
-                        if error != nil {
-                            if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                        if let error = error {
+                            if let errorCode = AuthErrorCode(rawValue: error._code) {
                                 switch errorCode {
                                 case .missingEmail:
                                     self.signUpErrorMessage = "Please enter a valid email address."
@@ -94,12 +94,12 @@ struct SignUpView: View {
                                 }
                             }
                             self.signUpErrorMessageOpacity = 1
-                        } else {
-                            self.registerNewUser(email: self.email, password: self.password)
-                            Auth.auth().currentUser?.sendEmailVerification{ (error) in
-                                if error != nil {
-                                    print(error?.localizedDescription)
-                                    self.signUpErrorMessage = error!.localizedDescription
+                        } else if let result = result {
+                            self.registerNewUser(id: result.user.uid, email: self.email, password: self.password)
+                            Auth.auth().currentUser?.sendEmailVerification{ error in
+                                if let error = error {
+                                    print(error.localizedDescription)
+                                    self.signUpErrorMessage = error.localizedDescription
                                     self.signUpErrorMessageOpacity = 1
                                 } else {
                                     print("Sent email verification to " + self.email) // developer purposes
@@ -130,11 +130,8 @@ struct SignUpView: View {
     }
     
     /* Assumes given credentials are all valid */
-    private func registerNewUser(email: String, password: String) {
-        let db = Firestore.firestore()
-        db.collection("users").document(email).setData([
-            "password": password, "emailVerified": false
-        ]) { err in
+    private func registerNewUser(id: String, email: String, password: String) {
+        Firestore.firestore().collection("users").document(id).setData(["id" : id, "email" : email, "emailVerified": false, "agreedToTerms" : false, "signUpDate" : Date()]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {

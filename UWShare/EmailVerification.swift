@@ -36,13 +36,13 @@ struct EmailVerification: View {
             Button(action: {
                 self.messageOpacity = 0
                 Auth.auth().currentUser?.sendEmailVerification{ (error) in
-                    if error != nil {
-                        if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                    if let error = error {
+                        if let errorCode = AuthErrorCode(rawValue: error._code) {
                             switch errorCode {
                             case .tooManyRequests:
                                 self.message = "❌ Too many requests!"
                             default:
-                                self.message = "❌ " + error!.localizedDescription;
+                                self.message = "❌ " + error.localizedDescription;
                             }
                         }
                     } else {

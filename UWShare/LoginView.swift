@@ -52,8 +52,8 @@ struct LoginView: View {
             Button(action: {
                 self.loginErrorMessageOpacity = 0
                 Auth.auth().signIn(withEmail: self.email, password: self.password) { (result, error) in
-                    if error != nil {
-                        if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                    if let error = error {
+                        if let errorCode = AuthErrorCode(rawValue: error._code) {
                             switch errorCode {
                             case .invalidEmail:
                                 self.loginErrorMessage = "Email address is invalid!"
